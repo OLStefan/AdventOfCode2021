@@ -24,6 +24,4 @@ const increases = commandsByLine.reduce(
 	{ depth: 0, horizontal: 0, aim: 0 },
 );
 
-console.log(increases);
-
 console.log(increases.depth * increases.horizontal);
