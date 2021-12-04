@@ -11,6 +11,8 @@
 		"day": "run(){ ts-node -s src/day-$1/puzzle-$2.ts; }; run"
 	},
 	"dependencies": {
+		"@types/lodash": "^4.14.177",
+		"lodash": "^4.17.21",
 		"ts-node": "^10.4.0"
 	},
 	"devDependencies": {
