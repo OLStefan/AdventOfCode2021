@@ -1,4 +1,3 @@
-import fs from 'fs';
+import readAsLines from '../utils/readAsLines';
 
-const text = fs.readFileSync(`${__dirname}/input.txt`).toString().trim();
-const textByLine = text.split('\n');
+const textByLine = readAsLines(`${__dirname}/input.txt`);
