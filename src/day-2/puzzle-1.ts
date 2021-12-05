@@ -1,23 +1,24 @@
-import fs from 'fs';
+import readAsLines from '../utils/readAsLines';
+import { getCommands } from './functions';
 
-const text = fs.readFileSync(`${__dirname}/input.txt`).toString().trim();
-const textByLine = text.split('\n');
-const commandsByLine = textByLine.map((text) => text.split(' ') as [string, string]);
+function getPosition(commands: Array<{ command: string; value: number }>): { depth: number; horizontal: number } {
+	return commands.reduce(
+		(previousValue, currentValue) => {
+			const { command, value } = currentValue;
+			switch (command) {
+				case 'up':
+					return { ...previousValue, depth: previousValue.depth - value };
+				case 'down':
+					return { ...previousValue, depth: previousValue.depth + value };
+				default:
+					return { ...previousValue, horizontal: previousValue.horizontal + value };
+			}
+		},
+		{ depth: 0, horizontal: 0 },
+	);
+}
 
-const increases = commandsByLine.reduce(
-	(previousValue, currentValue) => {
-		const [command, number] = currentValue;
-		const numberParsed = parseInt(number);
-		switch (command) {
-			case 'up':
-				return { ...previousValue, depth: previousValue.depth - numberParsed };
-			case 'down':
-				return { ...previousValue, depth: previousValue.depth + numberParsed };
-			default:
-				return { ...previousValue, horizontal: previousValue.horizontal + numberParsed };
-		}
-	},
-	{ depth: 0, horizontal: 0 },
-);
-
-console.log(increases.depth * increases.horizontal);
+const textByLine = readAsLines(`${__dirname}/input.txt`);
+const commands = getCommands(textByLine);
+const position = getPosition(commands);
+console.log(position.depth * position.horizontal);
