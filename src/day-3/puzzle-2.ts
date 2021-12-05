@@ -1,13 +1,7 @@
-import fs from 'fs';
+import readAsLines from '../utils/readAsLines';
+import { countBits } from './functions';
 
-const text = fs.readFileSync(`${__dirname}/input.txt`).toString().trim();
-const textByLine = text.split('\n');
-
-function countOnes(lines: string[], index: number) {
-	return lines.filter((line) => line[index] === '1').length;
-}
-
-function filter(lines: string[], moreOnes: string, lessOnes: string) {
+function filterLinesByBit(lines: string[], moreOnes: string, lessOnes: string) {
 	const places = lines[0]!.length;
 	let filteredLines = lines;
 	for (let i = 0; i < places; i++) {
@@ -15,8 +9,9 @@ function filter(lines: string[], moreOnes: string, lessOnes: string) {
 			break;
 		}
 
-		const ones = countOnes(filteredLines, i);
-		const moreOrEqualOnes = ones >= filteredLines.length / 2;
+		const counts = countBits(filteredLines);
+		const { ones, zeroes } = counts[i]!;
+		const moreOrEqualOnes = ones >= zeroes;
 
 		if (moreOrEqualOnes) {
 			filteredLines = filteredLines.filter((line) => line[i] === moreOnes);
@@ -28,9 +23,16 @@ function filter(lines: string[], moreOnes: string, lessOnes: string) {
 	return filteredLines;
 }
 
-const ox = filter(textByLine, '1', '0')[0]!;
-const co = filter(textByLine, '0', '1')[0]!;
+function filterLinesByMostBit(lines: Array<string>) {
+	return filterLinesByBit(lines, '1', '0')[0]!;
+}
+function filterLinesByLeastBit(lines: Array<string>) {
+	return filterLinesByBit(lines, '0', '1')[0]!;
+}
+
+const textByLine = readAsLines(`${__dirname}/input.txt`);
+const ox = filterLinesByMostBit(textByLine);
+const co = filterLinesByLeastBit(textByLine);
 const oxNumber = parseInt(ox, 2);
 const coNumber = parseInt(co, 2);
-
 console.log(oxNumber * coNumber);

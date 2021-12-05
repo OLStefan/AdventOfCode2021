@@ -1,37 +1,33 @@
-import fs from 'fs';
+import readAsLines from '../utils/readAsLines';
+import { countBits } from './functions';
 
-const text = fs.readFileSync(`${__dirname}/input.txt`).toString();
-const textByLine = text.split('\n');
+function getMostBits(lines: Array<string>) {
+	const counts = countBits(lines);
 
-const length = textByLine[0]!.length;
-
-const gamma: string[] = [];
-const epsilon: string[] = [];
-
-for (let i = 0; i < length; i++) {
-	let zeroes = 0;
-	let ones = 0;
-	for (let j = 0; j < textByLine.length; j++) {
-		const char = textByLine[j]!.charAt(i);
-		if (char === '0') {
-			zeroes++;
+	return counts.reduce((prev, curr) => {
+		if (curr.ones >= curr.zeroes) {
+			return `${prev}1`;
 		} else {
-			ones++;
+			return `${prev}0`;
 		}
-	}
-
-	console.log(zeroes, ones);
-
-	if (ones >= zeroes) {
-		gamma.push('1');
-		epsilon.push('0');
-	} else {
-		gamma.push('0');
-		epsilon.push('1');
-	}
+	}, '');
 }
 
-const epislonNumber = parseInt(epsilon.join(''), 2);
-const gammeNumber = parseInt(gamma.join(''), 2);
+function getLeastBits(lines: Array<string>) {
+	const counts = countBits(lines);
 
-console.log(epislonNumber * gammeNumber);
+	return counts.reduce((prev, curr) => {
+		if (curr.ones <= curr.zeroes) {
+			return `${prev}1`;
+		} else {
+			return `${prev}0`;
+		}
+	}, '');
+}
+
+const textByLine = readAsLines(`${__dirname}/input.txt`);
+const gamma = getMostBits(textByLine);
+const epsilon = getLeastBits(textByLine);
+const gammaNumber = parseInt(gamma, 2);
+const epislonNumber = parseInt(epsilon, 2);
+console.log(epislonNumber * gammaNumber);
