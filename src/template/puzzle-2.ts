@@ -1,3 +1,3 @@
 import readAsLines from '../utils/readAsLines';
 
-const textByLine = readAsLines(`${__dirname}/input.txt`);
+const input = readAsLines(`${__dirname}/input.txt`);

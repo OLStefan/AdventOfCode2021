@@ -1,7 +1,7 @@
 import readAsLines from '../utils/readAsLines';
 import { countIncreases } from './functions';
 
-const textByLine = readAsLines(`${__dirname}/input.txt`);
-const numbersByLine = textByLine.map((text) => parseInt(text));
-const increases = countIncreases(numbersByLine);
+const input = readAsLines(`${__dirname}/input.txt`);
+const parsedInput = input.map((text) => parseInt(text));
+const increases = countIncreases(parsedInput);
 console.log(increases);

@@ -22,7 +22,7 @@ function getPosition(commands: Array<{ command: string; value: number }>): { dep
 	);
 }
 
-const textByLine = readAsLines(`${__dirname}/input.txt`);
-const commands = getCommands(textByLine);
+const input = readAsLines(`${__dirname}/input.txt`);
+const commands = getCommands(input);
 const position = getPosition(commands);
 console.log(position.depth * position.horizontal);

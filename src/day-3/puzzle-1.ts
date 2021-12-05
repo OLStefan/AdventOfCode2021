@@ -25,9 +25,9 @@ function getLeastBits(lines: Array<string>) {
 	}, '');
 }
 
-const textByLine = readAsLines(`${__dirname}/input.txt`);
-const gamma = getMostBits(textByLine);
-const epsilon = getLeastBits(textByLine);
+const input = readAsLines(`${__dirname}/input.txt`);
+const gamma = getMostBits(input);
+const epsilon = getLeastBits(input);
 const gammaNumber = parseInt(gamma, 2);
 const epislonNumber = parseInt(epsilon, 2);
 console.log(epislonNumber * gammaNumber);
