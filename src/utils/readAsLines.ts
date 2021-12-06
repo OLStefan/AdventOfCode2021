@@ -1,5 +1,6 @@
 import fs from 'fs';
+import readFile from './readFile';
 
 export default function (path: string) {
-	return fs.readFileSync(path).toString().trim().split('\n');
+	return readFile(path).split('\n');
 }
