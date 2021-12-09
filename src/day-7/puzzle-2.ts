@@ -1,5 +1,5 @@
 import readFile from '../utils/readFile';
-import { getBestTargetPosition, getFuelUsageGausianSum, groupCrabs } from './functions';
+import { getBestTargetPosition, getFuelUsageGausianSum, groupCrabs } from './shared';
 
 const input = readFile(`${__dirname}/input.txt`);
 const parsedInput = input.split(',').map((number) => parseInt(number));

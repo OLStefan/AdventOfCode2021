@@ -1,5 +1,5 @@
 import readAsLines from '../utils/readAsLines';
-import { countBits } from './functions';
+import { countBits } from './shared';
 
 function getMostBits(lines: Array<string>) {
 	const counts = countBits(lines);

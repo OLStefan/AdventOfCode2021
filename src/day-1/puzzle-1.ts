@@ -1,5 +1,5 @@
 import readAsLines from '../utils/readAsLines';
-import { countIncreases } from './functions';
+import { countIncreases } from './shared';
 
 const input = readAsLines(`${__dirname}/input.txt`);
 const parsedInput = input.map((text) => parseInt(text));

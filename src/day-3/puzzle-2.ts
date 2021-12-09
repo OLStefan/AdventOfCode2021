@@ -1,5 +1,5 @@
 import readAsLines from '../utils/readAsLines';
-import { filterLinesByBit } from './functions';
+import { filterLinesByBit } from './shared';
 
 function filterLinesByMostBit(lines: Array<string>) {
 	return filterLinesByBit(lines, '1', '0')[0]!;

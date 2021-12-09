@@ -1,5 +1,5 @@
 import readAsLines from '../utils/readAsLines';
-import { getCommands } from './functions';
+import { getCommands } from './shared';
 
 function getPosition(commands: Array<{ command: string; value: number }>): { depth: number; horizontal: number } {
 	return commands.reduce(
