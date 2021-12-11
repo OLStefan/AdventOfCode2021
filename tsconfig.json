@@ -15,7 +15,8 @@
 		"allowJs": false,
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUncheckedIndexedAccess": true
+		"noUncheckedIndexedAccess": true,
+		"sourceMap": true
 	},
 	"include": ["src"]
 }
