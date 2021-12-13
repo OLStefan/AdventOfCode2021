@@ -1,7 +1,5 @@
 import { cloneDeep } from 'lodash';
-
-export type Matrix<T> = Array<Array<T>>;
-export type Coordinate = [number, number];
+import { Matrix } from '../types/types';
 
 export function mapToGrid(lines: Array<string>) {
 	return lines.map((line) => line.split('').map((entry) => parseInt(entry)));

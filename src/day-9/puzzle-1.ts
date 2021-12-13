@@ -1,5 +1,6 @@
+import { Coordinate, Matrix } from '../types/types';
 import readAsLines from '../utils/readAsLines';
-import { Coordinate, findLowPoints, mapToGrid, Matrix } from './shared';
+import { findLowPoints, mapToGrid } from './shared';
 
 function result(grid: Matrix<number>, lowPoints: Array<Coordinate>) {
 	return lowPoints.reduce((sum, [row, column]) => sum + grid[row]![column]! + 1, 0);

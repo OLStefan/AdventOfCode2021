@@ -1,6 +1,7 @@
 import { isEqual } from 'lodash';
+import { Coordinate, Matrix } from '../types/types';
 import readAsLines from '../utils/readAsLines';
-import { Coordinate, findLowPoints, mapToGrid, Matrix } from './shared';
+import { findLowPoints, mapToGrid } from './shared';
 
 function union<T>(a: Set<T>, b: Set<T>) {
 	let union = new Set(a);

@@ -1,5 +1,6 @@
+import { Matrix } from '../types/types';
 import readAsLines from '../utils/readAsLines';
-import { countFlashes, mapToGrid, Matrix, simulateStep } from './shared';
+import { countFlashes, mapToGrid, simulateStep } from './shared';
 
 function simulateSteps(grid: Matrix<number>, steps: number) {
 	let flashes = 0;
